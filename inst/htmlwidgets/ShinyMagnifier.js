@@ -43,15 +43,17 @@ HTMLWidgets.widget({
         
         drawImage: function (main_div, params, wid, hei){
             
-            var thumb = main_div.select('div')
+            var thumb = d3.select(el)
+                          .select('div')
                           .append("div")
-                          .attr("class","magnifier-thumb-wrapper");
-            thumb.select("div")
-              .append("img")
-              .attr("id","thumb")
-              .attr("src",params.thumb);
-
-            var full = main_div.select('div')
+                          .attr("class","magnifier-thumb-wrapper")
+                          .append("img")
+                          .attr("id","thumb")
+                          .attr("src",params.thumb);
+            console.log(thumb);
+            
+            var full = d3.select(el)
+                         .select('div')
                          .append("div")
                          .attr("class","magnifier-preview")
                          .attr("id","preview")
@@ -59,18 +61,14 @@ HTMLWidgets.widget({
                          .style("height", hei)
                          .text(params.previewText);
             
-            console.log(main_div);
-            console.log(thumb);
-            console.log(full);
-            
             var evt = new Event();
             var m = new Magnifier(evt);
             m.attach({
                 thumb: '#thumb',
                 large: params.fullImage,    
-                largeWrapper: 'preview'
-                //zoom: 3
-                //zoomable: true 
+                mode: 'inside',
+                zoom: params.zoom,
+                zoomable: true 
             });
         }
     };
