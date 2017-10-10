@@ -1,0 +1,9 @@
+Package: ShinyMagnifier
+Title: HTMLwidgets wrapper around Magnifier.js
+Version: 0.0.0.9000
+Authors@R: person("Daniel", "Gusenleitner", email = "gusef24@gmail.com", role = c("aut", "cre"))
+Description: Simple widget that takes a thumbnail and a larger image, displays the thumbnail and displays a portion of the larger image when hovering over the thumbnail.
+Depends: R (>= 3.4.1)
+License: MIT
+Encoding: UTF-8
+LazyData: true
