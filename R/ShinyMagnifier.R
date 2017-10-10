@@ -5,7 +5,7 @@
 #' @import htmlwidgets
 #'
 #' @export
-ShinyMagnifier <- function(thumb, image, previewText='', zoom = 3,
+ShinyMagnifier <- function(thumb, image, previewText='', zoom = 3, vspace = NULL,
                            width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
@@ -13,7 +13,8 @@ ShinyMagnifier <- function(thumb, image, previewText='', zoom = 3,
       thumb = thumb,
       fullImage = image,
       previewText = previewText,
-      zoom = zoom
+      zoom = zoom,
+      vspace=vspace
   )
 
   # create widget

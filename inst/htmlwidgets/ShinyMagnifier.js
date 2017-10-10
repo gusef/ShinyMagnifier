@@ -6,7 +6,6 @@ HTMLWidgets.widget({
 
   factory: function(el, width, height) {
 
-    var main_div  = null;
     var param = null;
     var wid = null;
     var hei = null;
@@ -21,16 +20,11 @@ HTMLWidgets.widget({
                 //remove everything in the element
                 el.innerHTML = '';
                 
-                //add a new div
-                this.main_div = d3.select(el)
-                                .append("div")
-                                .attr("class","main_div");
-            
                 //store the parameters
                 this.param = x;
                 
                 //draw the images and previews 
-                this.drawImage(this.main_div, this.param, wid, hei);
+                this.drawImage(this.param, wid, hei);
         },
 
         resize: function(width, height) {
@@ -38,20 +32,29 @@ HTMLWidgets.widget({
             wid = width;
             hei = height;
             
-            this.drawImage(this.main_div, this.param, wid, hei);
+            this.drawImage(this.param, wid, hei);
         },
         
-        drawImage: function (main_div, params, wid, hei){
-            
+        drawImage: function (params, wid, hei){
+
+            //add a new div
+            d3.select(el)
+              .append("div")
+              .attr("class","main_div");
+
             var thumb = d3.select(el)
                           .select('div')
                           .append("div")
                           .attr("class","magnifier-thumb-wrapper")
                           .append("img")
                           .attr("id","thumb")
+                          .attr("width",wid)
                           .attr("src",params.thumb);
-            console.log(thumb);
-            
+                          
+            if (params.vspace !== null){
+                thumb.attr("vspace", params.vspace);
+            }                          
+                          
             var full = d3.select(el)
                          .select('div')
                          .append("div")
